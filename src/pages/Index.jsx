@@ -8,16 +8,24 @@ const Index = () => {
   const toast = useToast();
 
   const handleDraw = () => {
-    const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
-    setPrize(randomPrize);
-    toast({
-      title: "Congratulations!",
-      description: `You won a ${randomPrize}!`,
-      status: "success",
-      duration: 5000,
-      isClosable: true,
-      position: "top",
-    });
+    let index = 0;
+    const interval = setInterval(() => {
+      setPrize(prizes[index]);
+      index = (index + 1) % prizes.length;
+    }, 100);
+    setTimeout(() => {
+      clearInterval(interval);
+      const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+      setPrize(randomPrize);
+      toast({
+        title: "Congratulations!",
+        description: `You won a ${randomPrize}!`,
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+    }, 2000);
   };
 
   return (
