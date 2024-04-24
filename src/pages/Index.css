@@ -1,12 +1,12 @@
-@keyframes spin {
+@keyframes highlight {
   from {
-    transform: rotate(0deg);
+    background-color: transparent;
   }
   to {
-    transform: rotate(360deg);
+    background-color: yellow;
   }
 }
 
 .highlight-animation {
-  animation: spin 2s linear infinite;
+  animation: highlight 0.5s alternate infinite;
 }
