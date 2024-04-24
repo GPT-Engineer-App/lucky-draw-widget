@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Button, Text, VStack, useToast } from "@chakra-ui/react";
+import { Box, Button, Text, VStack, useToast, SimpleGrid } from "@chakra-ui/react";
 import { FaGift } from "react-icons/fa";
 
 const Index = () => {
@@ -22,6 +22,13 @@ const Index = () => {
 
   return (
     <VStack spacing={8} p={8}>
+      <SimpleGrid columns={3} spacing={5}>
+        {prizes.map((prize) => (
+          <Box p={5} shadow="md" borderWidth="1px" rounded="md">
+            {prize}
+          </Box>
+        ))}
+      </SimpleGrid>
       <Box textAlign="center">
         <Text fontSize="2xl" fontWeight="bold">
           Lucky Draw Game
@@ -32,7 +39,7 @@ const Index = () => {
         Draw a Prize
       </Button>
       {prize && (
-        <Text fontSize="xl" fontWeight="bold">
+        <Text fontSize="xl" fontWeight="bold" className="prize-animation">
           You won: {prize}
         </Text>
       )}
@@ -40,4 +47,5 @@ const Index = () => {
   );
 };
 
+import "./Index.css";
 export default Index;
