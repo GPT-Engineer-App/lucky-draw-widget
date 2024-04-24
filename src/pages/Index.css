@@ -1,9 +1,15 @@
 @keyframes highlight {
-  from {
+  0% {
+    transform: scale(1);
     background-color: transparent;
   }
-  to {
+  50% {
+    transform: scale(1.1);
     background-color: yellow;
+  }
+  100% {
+    transform: scale(1);
+    background-color: transparent;
   }
 }
 
