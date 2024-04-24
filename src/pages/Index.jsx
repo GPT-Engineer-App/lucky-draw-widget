@@ -5,12 +5,13 @@ import { FaGift } from "react-icons/fa";
 const Index = () => {
   const prizes = ["iPhone 13", "iPad Air", "MacBook Pro", "Apple Watch", "AirPods Pro", "Nothing"];
   const [prize, setPrize] = useState("");
+  const [highlightedPrize, setHighlightedPrize] = useState(null);
   const toast = useToast();
 
   const handleDraw = () => {
     let index = 0;
     const interval = setInterval(() => {
-      setPrize(prizes[index]);
+      setHighlightedPrize(prizes[index]);
       index = (index + 1) % prizes.length;
     }, 100);
     setTimeout(() => {
@@ -31,8 +32,8 @@ const Index = () => {
   return (
     <VStack spacing={8} p={8}>
       <SimpleGrid columns={3} spacing={5}>
-        {prizes.map((prize) => (
-          <Box p={5} shadow="md" borderWidth="1px" rounded="md">
+        {prizes.map((item, idx) => (
+          <Box p={5} shadow="md" borderWidth="1px" rounded="md" className={highlightedPrize === item ? "highlight-animation" : ""}>
             {prize}
           </Box>
         ))}
