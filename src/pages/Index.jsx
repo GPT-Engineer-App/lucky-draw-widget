@@ -31,13 +31,16 @@ const Index = () => {
 
   return (
     <VStack spacing={8} p={8}>
-      <SimpleGrid columns={3} spacing={5}>
-        {prizes.map((item, idx) => (
-          <Box p={5} shadow="md" borderWidth="1px" rounded="md" className={highlightedPrize === item ? "highlight-animation" : ""}>
-            {prize}
-          </Box>
-        ))}
-      </SimpleGrid>
+      <Box position="relative" w="300px" h="300px">
+        {prizes.map((item, idx) => {
+          const angle = (360 / prizes.length) * idx;
+          return (
+            <Box position="absolute" transform={`rotate(${angle}deg) translate(140px) rotate(-${angle}deg)`} textAlign="center" width="80px" className={highlightedPrize === item ? "highlight-animation" : ""}>
+              {item}
+            </Box>
+          );
+        })}
+      </Box>
       <Box textAlign="center">
         <Text fontSize="2xl" fontWeight="bold">
           Lucky Draw Game
